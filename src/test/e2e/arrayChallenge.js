@@ -2,7 +2,6 @@ var assert = require("assert");
 var webdriver = require("selenium-webdriver");
 const By = webdriver.By;
 const until = webdriver.until;
-require("geckodriver");
 var chrome = require('selenium-webdriver/chrome');
 var path = require('chromedriver').path;
 const serverUri = "http://localhost:3000/#";
@@ -56,14 +55,16 @@ function findIndexOfRows(arr, size) {
    for (var i = 1; i < size; i++) {
        right_sum += parseInt(arr[i]);
    }
+   // Check index 0 as potential pivot
+   if (left_sum === right_sum)
+       return 0;
    for (var i = 0, j = 1; j < size; i++, j++) {
            right_sum -= parseInt(arr[j]);
            left_sum += parseInt(arr[i]);
            if (left_sum === right_sum)
                return i + 1;
-               // return parseInt(arr[i+1]);
    }
-   return -1;
+   return null;
 }
 
 async function submitChallenge() {
@@ -77,7 +78,6 @@ async function submitChallenge() {
        var indexResult = findIndexOfRows(rowVal.split(' '), columns.length);
        console.log("Index Result: " + indexResult);
        submitChallengeInput(i++,indexResult);
-       i >= rows.length
    }
 
 }
@@ -92,7 +92,7 @@ browser.findElement(By.xpath("//button[@data-test-id = 'render-challenge']")).cl
         .then(logTitle)
         .then(title => { assert.equal(title, appTitle); resolve(); })
         .then(submitChallenge) // AsyncRow will read table and get index and insert submit the answers
-        .then(submitYourName("Mustaq Syed"))
+        .then(() => submitYourName("Mustaq Syed"))
         .then(submitAnswers)
         .catch(err => reject(err));
 
