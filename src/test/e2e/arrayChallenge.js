@@ -77,7 +77,7 @@ async function submitChallenge() {
        console.log("Row: " +rowVal);
        var indexResult = findIndexOfRows(rowVal.split(' '), columns.length);
        console.log("Index Result: " + indexResult);
-       submitChallengeInput(i++,indexResult);
+       submitChallengeInput(i++, indexResult === null ? "null" : indexResult);
    }
 
 }
@@ -94,6 +94,7 @@ browser.findElement(By.xpath("//button[@data-test-id = 'render-challenge']")).cl
         .then(submitChallenge) // AsyncRow will read table and get index and insert submit the answers
         .then(() => submitYourName("Mustaq Syed"))
         .then(submitAnswers)
+        .then(closeBrowser)
         .catch(err => reject(err));
 
        });

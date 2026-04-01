@@ -96,7 +96,7 @@ export default class AnswerTable extends Component {
           <p>Please be aware this challenge is not about spamming the api to get the correct answers, but your chosen implementation.</p>
           <p>Good Luck!</p>
           <RaisedButton label="Submit Answers" primary={true} onClick={this.submitForm}/>
-         <DialogBox data-test-id={"render-challenge"} className={"submit-button"}  open={this.state.dialogBoxOpen} complete={this.state.complete} handleClose={this.handleClose} />
+         <DialogBox data-test-id={"submit-dialog"} className={"submit-button"}  open={this.state.dialogBoxOpen} complete={this.state.complete} handleClose={this.handleClose} />
         </Paper>
       </div>
     );

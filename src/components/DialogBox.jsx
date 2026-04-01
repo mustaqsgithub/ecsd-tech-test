@@ -12,10 +12,6 @@ const dialogText = complete => (complete ? 'Congratulations you have succeeded. 
   'It looks like your answer wasn\'t quite right ❌');
 
 export default class DialogBox extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const actions = [
       <FlatButton
