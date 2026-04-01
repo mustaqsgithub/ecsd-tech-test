@@ -77,7 +77,7 @@ async function submitChallenge() {
        console.log("Row: " +rowVal);
        var indexResult = findIndexOfRows(rowVal.split(' '), columns.length);
        console.log("Index Result: " + indexResult);
-       submitChallengeInput(i++,indexResult);
+       submitChallengeInput(i++, indexResult !== null ? indexResult : "null");
    }
 
 }
