@@ -13,7 +13,7 @@ const dialogText = complete => (complete ? 'Congratulations you have succeeded. 
 
 export default class DialogBox extends React.Component {
   constructor(props) {
-    super();
+    super(props);
   }
 
   render() {
@@ -32,7 +32,7 @@ export default class DialogBox extends React.Component {
           actions={actions}
           modal={false}
           open={this.props.open}
-          onRequestClose={this.handleClose}
+          onRequestClose={this.props.handleClose}
         >
 
           {dialogText(this.props.complete)}

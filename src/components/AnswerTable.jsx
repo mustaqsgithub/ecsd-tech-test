@@ -33,7 +33,7 @@ const rowStyle ={
 
 export default class AnswerTable extends Component {
   constructor(props) {
-    super()
+    super(props)
     this.handleClose = this.handleClose.bind(this)
   }
   
@@ -68,7 +68,7 @@ export default class AnswerTable extends Component {
         this.setState({complete: true});
       }
     })
-    .catch(err => console.error)
+    .catch(err => console.error(err))
   }
 
   handleText = (event, value, formId) => {
